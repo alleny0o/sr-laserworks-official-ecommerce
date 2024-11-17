@@ -8,6 +8,8 @@ import { pricingFields } from '@/sanity/sub-components/products/pricing';
 import { inventoryFields } from '@/sanity/sub-components/products/inventory';
 import { optionsFields } from '@/sanity/sub-components/products/options';
 import { variantsFields } from '@/sanity/sub-components/products/variants';
+import { formFields } from '@/sanity/sub-components/products/form';
+import { seoFields } from '@/sanity/sub-components/products/seo';
 
 // universal types for products
 interface Color {
@@ -65,5 +67,7 @@ export const productType = defineType({
         ...inventoryFields,
         ...optionsFields,
         ...variantsFields,
+        ...formFields,
+        ...seoFields,
     ]
 });
