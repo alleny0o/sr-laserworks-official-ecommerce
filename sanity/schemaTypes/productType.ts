@@ -6,6 +6,7 @@ import { generalFields } from '@/sanity/sub-components/products/general';
 import { mediaFields } from '@/sanity/sub-components/products/media';
 import { pricingFields } from '@/sanity/sub-components/products/pricing';
 import { inventoryFields } from '@/sanity/sub-components/products/inventory';
+import { optionsFields } from '@/sanity/sub-components/products/options';
 
 export const productType = defineType({
     name: 'product',
@@ -31,6 +32,7 @@ export const productType = defineType({
         ...generalFields,
         ...mediaFields,
         ...pricingFields,
-        ...inventoryFields
+        ...inventoryFields,
+        ...optionsFields,
     ]
 });

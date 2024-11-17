@@ -16,6 +16,9 @@ import {structure} from './sanity/structure'
 // import the MUX Plugin
 import { muxInput } from 'sanity-plugin-mux-input';
 
+// import the Color Plugin
+import { simplerColorInput } from 'sanity-plugin-simpler-color-input'
+
 export default defineConfig({
   basePath: '/studio',
   projectId,
@@ -27,6 +30,22 @@ export default defineConfig({
     // Vision is for querying with GROQ from inside the Studio
     // https://www.sanity.io/docs/the-vision-plugin
     visionTool({defaultApiVersion: apiVersion}),
+
+    // Add the MUX Plugin
     muxInput(),
+
+    // Add the Color Plugin
+    simplerColorInput({
+      defaultColorFormat: 'hex',
+      defaultColorList: [
+        { label: 'Light', value: '#ffffff' },
+        { label: 'Dark', value: '#333333' },
+        { label: 'Brand', value: '#ca786d' },
+        { label: 'Accent', value: '#626754' },
+        { label: 'Custom...', value: 'custom' },
+      ],
+      enableSearch: true,
+    }),
+
   ],
 })
