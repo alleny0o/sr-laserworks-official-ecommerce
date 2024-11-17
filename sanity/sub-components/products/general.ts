@@ -39,7 +39,7 @@ export const generalFields = [
     }),
     defineField({
         name: 'categories',
-        title: 'Categories',
+        title: 'Categories (optional)',
         type: 'array',
         of: [{ type: 'reference', to: [{ type: 'category' }] }],
     }),
