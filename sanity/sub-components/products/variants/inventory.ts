@@ -19,9 +19,18 @@ export const inventoryFields = [
             }),
             defineField({
                 name: 'variantSKU',
-                title: 'Variant SKU',
+                title: 'Variant SKU (optional)',
+                description: 'Optional, but extremely recommended to be unique across all products and variants if provided.',
                 type: 'string',
-                validation: Rule => Rule.required(),
+                validation: Rule => [
+                    Rule.max(16).error('SKU must be 16 characters or less'),
+                    Rule.custom((variantSKU) => {
+                        if (variantSKU && !/^[a-zA-Z0-9._-]*$/.test(variantSKU)) {
+                            return 'SKU must be alphanumeric (-, _, and . allowed).';
+                        }
+                        return true;
+                    }),
+                ],
             }),
             defineField({
                 name: 'variantTrackStock',

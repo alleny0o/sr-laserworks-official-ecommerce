@@ -192,6 +192,99 @@ export type Product = {
     _type: "imageOption";
     _key: string;
   }>;
+  variants?: Array<{
+    variantName?: string;
+    options?: Array<{
+      name?: string;
+      value?: string;
+      _type: "option";
+      _key: string;
+    }>;
+    variantProductName?: string;
+    variantUniqueIdentifier?: string;
+    variantCustomForm?: boolean;
+    variantDescription?: Array<{
+      children?: Array<{
+        marks?: Array<string>;
+        text?: string;
+        _type: "span";
+        _key: string;
+      }>;
+      style?: "normal" | "h1" | "h2" | "h3" | "h4" | "blockquote";
+      listItem?: "bullet";
+      markDefs?: Array<{
+        href?: string;
+        _type: "link";
+        _key: string;
+      }>;
+      level?: number;
+      _type: "block";
+      _key: string;
+    } | {
+      asset?: {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+      };
+      hotspot?: SanityImageHotspot;
+      crop?: SanityImageCrop;
+      alt?: string;
+      _type: "image";
+      _key: string;
+    }>;
+    mediaAssociate?: string;
+    variantPricingInfo?: {
+      variantPrice?: number;
+      variantCompareAtPrice?: number;
+    };
+    variantInventoryInfo?: {
+      variantStock?: number;
+      variantMaxOrderQuantity?: number;
+      variantSKU?: string;
+      variantTrackStock?: boolean;
+    };
+    _type: "variant";
+    _key: string;
+  }>;
+  formCustomization?: {
+    enabled?: boolean;
+    showForm?: boolean;
+    title?: string;
+    fields?: Array<{
+      label?: string;
+      subDescription?: string;
+      isRequired?: boolean;
+      placeholder?: string;
+      validation?: {
+        minCharacters?: number;
+        maxCharacters?: number;
+      };
+      _type: "input";
+      _key: string;
+    } | {
+      label?: string;
+      subDescription?: string;
+      isRequired?: boolean;
+      placeholder?: string;
+      validation?: {
+        minCharacters?: number;
+        maxCharacters?: number;
+      };
+      _type: "textarea";
+      _key: string;
+    } | {
+      label?: string;
+      subDescription?: string;
+      isRequired?: boolean;
+      _type: "imageUpload";
+      _key: string;
+    }>;
+  };
+  seo?: {
+    title?: string;
+    metaDescription?: string;
+  };
 };
 
 export type Post = {

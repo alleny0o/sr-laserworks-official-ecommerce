@@ -33,8 +33,18 @@ export const inventoryFields = [
            }),
            defineField({
             name: 'sku',
-            title: 'SKU',
+            title: 'SKU (optional)',
+            description: 'Optional, but extremely recommended to be unique across all products and variants if provided.',
             type: 'string',
+            validation: Rule => [
+                Rule.max(16).error('SKU must be 16 characters or less'),
+                Rule.custom((sku) => {
+                    if (sku && !/^[a-zA-Z0-9._-]*$/.test(sku)) {
+                        return 'SKU must be alphanumeric (-, _, and . allowed).';
+                    }
+                    return true;
+                }),
+            ],
            }),
            defineField({
             name: 'trackStock',

@@ -15,6 +15,7 @@ export const formFields = [
       defineField({
         name: 'showForm',
         title: 'Does this product use the custom form?',
+        description: 'It could be that the product doesn\'t use the form, but it\'s variable does.',
         type: 'boolean',
         initialValue: false,
         readOnly: ({ parent }) => !parent?.enabled,

@@ -20,9 +20,9 @@ export function GenerateVariants(props: ArrayOfObjectsInputProps) {
     // Get the values from the form
     const variantProductName = useFormValue(['name']) as string;
     const variantOptions = useFormValue(['options']) as Option[];
-    const variantPrice = useFormValue(['price']) as number;
-    const variantStock = useFormValue(['stock']) as number;
-    const variantQuantity = useFormValue(['quantity']) as number;
+    const variantPrice = useFormValue(['pricingInfo', 'price']) as number;
+    // const variantStock = useFormValue(['inventoryInfo', 'stock']) as number;
+    // const variantQuantity = useFormValue(['inventoryInfo', 'maxOrderQuantity']) as number;
 
     const cartesianProduct = (arr: { name: string; value: string; }[][]): { name: string; value: string; }[][] => {
         if (!arr?.length) {
@@ -72,11 +72,11 @@ export function GenerateVariants(props: ArrayOfObjectsInputProps) {
                 variantProductName,
                 variantCustomForm: false,
                 variantPricingInfo: {
-                    variantPrice,
+                    variantPrice: variantPrice || 0,
                 },
                 variantInventoryInfo: {
-                    variantStock: variantStock || 0,
-                    variantMaxOrderQuantity: variantQuantity,
+                    variantStock: 0,
+                    variantMaxOrderQuantity: 0,
                     variantTrackStock: true,
                 },
             };
