@@ -7,6 +7,36 @@ import { mediaFields } from '@/sanity/sub-components/products/media';
 import { pricingFields } from '@/sanity/sub-components/products/pricing';
 import { inventoryFields } from '@/sanity/sub-components/products/inventory';
 import { optionsFields } from '@/sanity/sub-components/products/options';
+import { variantsFields } from '@/sanity/sub-components/products/variants';
+
+// universal types for products
+interface Color {
+    label: string;
+    value: string;
+  }
+  
+  interface Image {
+    _type: string;
+    asset: {
+      _type: string;
+      _ref: string;
+    };
+  }
+  
+  export interface OptionValue {
+    _type: string;
+    _key: string;
+    value: string;
+    color?: Color;
+    image?: Image;
+  }
+  
+  export interface Option {
+    _type: string;
+    _key: string;
+    optionName: string;
+    optionValues: OptionValue[];
+  }
 
 export const productType = defineType({
     name: 'product',
@@ -34,5 +64,6 @@ export const productType = defineType({
         ...pricingFields,
         ...inventoryFields,
         ...optionsFields,
+        ...variantsFields,
     ]
 });

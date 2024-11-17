@@ -1,36 +1,8 @@
 import { defineField, Rule } from "sanity";
+import { OptionValue, Option } from "@/sanity/schemaTypes/productType";
 import { ImagesIcon, ThListIcon, PlayIcon } from "@sanity/icons";
 import { IoIosColorFill } from "react-icons/io";
 import { VscSymbolColor } from "react-icons/vsc";
-
-// type safe stuff
-interface Color {
-  label: string;
-  value: string;
-}
-
-interface Image {
-  _type: string;
-  asset: {
-    _type: string;
-    _ref: string;
-  };
-}
-
-interface OptionValue {
-  _type: string;
-  _key: string;
-  value: string;
-  color?: Color;
-  image?: Image;
-}
-
-interface Option {
-  _type: string;
-  _key: string;
-  optionName: string;
-  optionValues: OptionValue[];
-}
 
 // validation stuff
 const validateUniqueOptions = (Rule: Rule) => {
