@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { ClerkProvider } from "@clerk/nextjs";
 import "../globals.css";
+import { SanityLive } from "@/sanity/lib/live";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -17,6 +18,8 @@ export default function RootLayout({
       <html lang="en">
         <body>
           {children}
+
+          <SanityLive />
         </body>
       </html>
     </ClerkProvider>
